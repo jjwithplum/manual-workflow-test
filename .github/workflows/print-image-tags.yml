@@ -15,8 +15,11 @@ on:
 jobs:
   print-tags:
     runs-on: ubuntu-latest
+    env:
+      APP_TAG_FOO: ${{ inputs.APP_TAG_FOO }}
+      APP_TAG_BAR: ${{ inputs.APP_TAG_BAR }}
     steps:
       - name: Print image tags
         run: |
-          echo "APP_TAG_FOO: ${{ inputs.APP_TAG_FOO }}"
-          echo "APP_TAG_BAR: ${{ inputs.APP_TAG_BAR }}"
+          echo "APP_TAG_FOO: ${APP_TAG_FOO:-none}"
+          echo "APP_TAG_BAR: ${APP_TAG_BAR:-none}"
