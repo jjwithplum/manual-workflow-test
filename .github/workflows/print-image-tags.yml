@@ -1,0 +1,22 @@
+name: Print Image Tags
+
+on:
+  workflow_dispatch:
+    inputs:
+      APP_TAG_FOO:
+        description: 'App tag foo'
+        required: false
+        type: string
+      APP_TAG_BAR:
+        description: 'App tag bar'
+        required: false
+        type: string
+
+jobs:
+  print-tags:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print image tags
+        run: |
+          echo "APP_TAG_FOO: ${{ inputs.APP_TAG_FOO }}"
+          echo "APP_TAG_BAR: ${{ inputs.APP_TAG_BAR }}"
